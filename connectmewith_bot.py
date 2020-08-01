@@ -33,7 +33,7 @@ def store_last_seen_id(last_seen_id, file_name):
 def reply_to_tweets():
     print('retrieving tweets...', flush=True)
     last_seen_id = retrieve_last_seen_id(FILE_NAME)
-    
+
     mentions = api.mentions_timeline(
                         last_seen_id,
                         tweet_mode='extended')
@@ -46,8 +46,8 @@ def reply_to_tweets():
 
         print(mention.full_text.split(" ", 2)[1])
 
-#looks for BLM topic       
-        
+#looks for BLM topic
+
         if 'blm' in mention.full_text.lower().split(" ", 2)[1] or 'blacklivesmatter' in mention.full_text.lower().split(" ", 2)[1]:
         	print('responding back...', flush=True)
         	api.update_status('@' + mention.user.screen_name + ' Preparing your connection...', mention.id)

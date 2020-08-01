@@ -72,12 +72,14 @@ def reply_to_tweets_and_match():
             elif (
                 len(matching_dict[match]) == 1
             ):  # add the other user and prepare to add a new entry
+                print("match made!")
                 matching_dict[match].append(mention.user.id)
                 api.update_status(
                     "@" + mention.user.screen_name + "You have been connected!",
                     mention.id,
                 )
                 match += 1
+                print("preparing for a new match!")
                 # call the direct message/ text with those user
 
         print(matching_dict)
@@ -85,6 +87,7 @@ def reply_to_tweets_and_match():
 
 # loops every 15sec
 
-while True:
-    reply_to_tweets_and_match()
-    time.sleep(15)
+reply_to_tweets_and_match()
+# while True:
+#     reply_to_tweets_and_match()
+#     time.sleep(15)

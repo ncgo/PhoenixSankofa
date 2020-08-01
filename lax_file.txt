@@ -1,0 +1,4 @@
+#lax_file
+links: {"Anti-Black Racism in Latinx Communities" : "https://repository.stcloudstate.edu/cgi/viewcontent.cgi?article=1022&context=socresp_etds",\
+        "Non-Black Latinx": "https://www.insider.com/anti-blackness-non-black-latinx-spaces-racism-2020-6"\
+        "Latinx LGBTQ" : "https://www.hrc.org/resources/being-latino-a-lgbtq-an-introduction",}

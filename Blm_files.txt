@@ -1,0 +1,5 @@
+#Blm_files
+
+links= {"Mutual Aid": "https://www.paypal.com/pools/c/8nnys8G2Qc", "Mutual Aid NYC" : "https://mutualaid.nyc/get-involved/donate/", \
+        "NYC Black Mutual Aid": "https://twitter.com/nycblackaid?lang=en", \
+        "Black Lives Matter": "https://blacklivesmatter.com/", "Reparations": "https://www.theatlantic.com/magazine/archive/2014/06/the-case-for-reparations/361631/"}

@@ -1,5 +1,6 @@
 import tweepy
 import time
+from tinydb import TinyDB, Query
 
 print('Connect Me With by Team Phoenix Sankofa for Twitter Hackathon')
 
@@ -13,6 +14,7 @@ auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
 
 FILE_NAME = 'last_seen_id.txt'
+db = TinyDB('db.json')
 
 #only looks at new tweets
 
@@ -36,15 +38,17 @@ def reply_to_tweets():
     
     mentions = api.mentions_timeline(
                         last_seen_id,
-                        tweet_mode='extended')
+                        tweet_mode='extended') #makes long tweets visible
+
     for mention in reversed(mentions):
         print(str(mention.id) + ' - ' + mention.full_text, flush=True)
         last_seen_id = mention.id
         store_last_seen_id(last_seen_id, FILE_NAME)
 
-#looks for any topic
+#add user info into database
 
-        print(mention.full_text.split(" ", 2)[1])
+        db.insert({'name': mention.user.name, 'handle': mention.user.screen_name, 'user_id': mention.user.id_str, 'topic': mention.full_text.split(" ", 2)[1], 'open': 1, "location": mention.user.location})
+
 
 #looks for BLM topic       
         

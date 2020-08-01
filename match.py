@@ -27,7 +27,7 @@ def match_user():
     for mention in reversed(mentions):
         print(mention.text)
         words = mention.text.split(" ")
-        if words[0] == "@adirar111":  # if it contains some word
+        if words[0] == "@adirar111":  # if it contains some word(s)
             if match not in matching_dict.keys():  # add the first user
                 matching_dict[match] = [mention.user.id]
             elif (

@@ -1,10 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import About from "../views/About.vue";
 import Data from "../views/Data.vue";
 import Team from "../views/Team.vue";
-import Instructions from "../views/Instructions.vue";
+import AboutInfo from "../views/AboutInfo.vue";
+import Documentation from "../views/Documentation.vue";
 
 Vue.use(VueRouter);
 
@@ -15,9 +15,9 @@ const routes = [
     component: Home,
     children: [
       {
-        path: "/instructions",
-        name: "Instructions",
-        component: Instructions,
+        path: "/about",
+        name: "About",
+        component: AboutInfo,
       }
     ]
   },
@@ -25,11 +25,6 @@ const routes = [
     path: "/home",
     name: "Home",
     component: Home
-  },
-  {
-    path: "/about",
-    name: "About",
-    component: About
   },
   {
     path: "/data",
@@ -40,6 +35,11 @@ const routes = [
     path: "/team",
     name: "Team",
     component: Team
+  },
+  {
+    path: "/documentation",
+    name: "Documentation",
+    component: Documentation
   }
 ];
 

@@ -129,7 +129,7 @@
         <v-col>
         <v-img class="imgExp3" src="../assets/8.png"></v-img>
         </v-col>
-        </v-row>
+        </v-row>ç
       </v-container>
     </v-parallax>
   </v-container>

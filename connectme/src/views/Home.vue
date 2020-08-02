@@ -1,9 +1,9 @@
 <template>
   <span>
     <v-parallax
-    dark
-    src="https://cdn.pixabay.com/photo/2020/06/11/09/37/black-lives-matter-5285956_1280.jpg"
-  >
+      dark
+      src="https://cdn.pixabay.com/photo/2020/06/11/09/37/black-lives-matter-5285956_1280.jpg"
+    >
       <v-card class=" topics" max-width="600px">
         <v-card-text>
           <div>#BlackLivesMatter</div>
@@ -60,7 +60,7 @@
           <h1>IT'S TIME TO HAVE A CONVERSATION</h1>
         </div>
       </v-row>
-      </v-parallax>
+    </v-parallax>
     <div id="presentation">
       <v-img src="../assets/1.png" height="400px"></v-img>
     </div>
@@ -148,10 +148,10 @@ export default {
     height: 400px;
   }
   .card {
-  margin-top: 250px;
-  margin-left: 20%;
-  top: 8%;
-  position: absolute;
+    margin-top: 250px;
+    margin-left: 20%;
+    top: 8%;
+    position: absolute;
   }
   .topics {
     position: absolute;

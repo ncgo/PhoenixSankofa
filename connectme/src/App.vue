@@ -46,28 +46,28 @@
     <v-main>
       <router-view></router-view>
     </v-main>
-      <v-footer dark padless fixed>
-        <v-card class="flex" flat tile>
-          <v-card-title class="blue">
-            <strong class="subheading">Made with love and power</strong>
-            <v-spacer></v-spacer>
-            <v-btn
-              v-for="icon in icons"
-              :key="icon.title"
-              :to="icon.link"
-              class="mx-4"
-              dark
-              icon
-            >
-              <v-icon size="24px">{{ icon.icon }}</v-icon>
-            </v-btn>
-          </v-card-title>
-          <v-card-text class="py-2 red--text text-center">
-            {{ new Date().getFullYear() }} —
-            <strong> Team Phoenix Sankofa</strong>
-          </v-card-text>
-        </v-card>
-      </v-footer>
+    <v-footer dark padless fixed>
+      <v-card class="flex" flat tile>
+        <v-card-title class="blue">
+          <strong class="subheading">Made with love and power</strong>
+          <v-spacer></v-spacer>
+          <v-btn
+            v-for="icon in icons"
+            :key="icon.title"
+            :to="icon.link"
+            class="mx-4"
+            dark
+            icon
+          >
+            <v-icon size="24px">{{ icon.icon }}</v-icon>
+          </v-btn>
+        </v-card-title>
+        <v-card-text class="py-2 red--text text-center">
+          {{ new Date().getFullYear() }} —
+          <strong> Team Phoenix Sankofa</strong>
+        </v-card-text>
+      </v-card>
+    </v-footer>
   </v-app>
 </template>
 

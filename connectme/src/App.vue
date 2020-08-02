@@ -5,13 +5,13 @@
         app
         v-model="drawer"
         class="lighten-2"
-        color="#1FA1F2"
+        color="#E0193D"
         dark
         disable-resize-watcher
       >
         <v-list>
           <template v-for="(item, index) in items">
-            <v-list-item :key="index">
+            <v-list-item :key="index" :to="item.link">
               <v-list-item-content>
                 {{ item.title }}
               </v-list-item-content>
@@ -20,7 +20,7 @@
           </template>
         </v-list>
       </v-navigation-drawer>
-      <v-app-bar color="#1FA1F2" dark fixed>
+      <v-app-bar color="blue" dark fixed>
         <v-app-bar-nav-icon class="hidden-md-and-up" @click="drawer = !drawer">
         </v-app-bar-nav-icon>
         <v-icon @click="$router.push('/')">mdi-link-variant</v-icon>
@@ -47,19 +47,25 @@
       <router-view></router-view>
     </v-main>
     <v-card height="400px">
-      <v-footer padless fixed>
-        <v-card flat tile width="100%" class="blue lighten-1 text-center">
-          <v-card-text>
-            <v-btn v-for="icon in icons" :key="icon" class="mx-4" icon>
-              <v-icon size="24px" color="white">{{ icon }}</v-icon>
+      <v-footer dark padless fixed>
+        <v-card class="flex" flat tile>
+          <v-card-title class="blue">
+            <strong class="subheading">Made with love and power</strong>
+            <v-spacer></v-spacer>
+            <v-btn
+              v-for="icon in icons"
+              :key="icon.title"
+              :to="icon.link"
+              class="mx-4"
+              dark
+              icon
+            >
+              <v-icon size="24px">{{ icon.icon }}</v-icon>
             </v-btn>
-          </v-card-text>
-
-          <v-divider></v-divider>
-
-          <v-card-text class="white--text">
+          </v-card-title>
+          <v-card-text class="py-2 red--text text-center">
             {{ new Date().getFullYear() }} —
-            <strong>Team Phoenix Sankofa</strong>
+            <strong> Team Phoenix Sankofa</strong>
           </v-card-text>
         </v-card>
       </v-footer>
@@ -75,11 +81,25 @@ export default {
       appTitle: "ConnectMeWith",
       drawer: false,
       items: [
-        { title: "MENU" },
-        { title: "ABOUT" },
-        { title: "MEET THE TEAM" }
+        { title: "HOME", link: "/home" },
+        { title: "ABOUT", link: "/about" },
+        { title: "MEET THE TEAM", link: "/team" },
+        { title: "DATA VISUALIZATION", link: "/data" }
       ],
-      icons: ["mdi-home", "mdi-twitter", "mdi-twitter-retweet", "mdi-heart"],
+      icons: [
+        { title: "Home", icon: "mdi-home", link: "/home" },
+        {
+          title: "Twitter",
+          icon: "mdi-twitter",
+          link: "/twitterAccount"
+        },
+        {
+          title: "Try",
+          icon: "mdi-twitter-retweet",
+          link: "/TryItOut"
+        },
+        { title: "like", icon: "mdi-heart", link: "/home" }
+      ],
       padless: false,
       variant: "fixed"
     };

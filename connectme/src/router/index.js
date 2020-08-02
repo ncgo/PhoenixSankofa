@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import Data from "../views/Data.vue";
 import Team from "../views/Team.vue";
+import Instructions from "../views/Instructions.vue";
 
 Vue.use(VueRouter);
 
@@ -11,7 +12,14 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: "/instructions",
+        name: "Instructions",
+        component: Instructions,
+      }
+    ]
   },
   {
     path: "/home",

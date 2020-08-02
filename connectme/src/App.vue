@@ -46,7 +46,7 @@
     <v-main>
       <router-view></router-view>
     </v-main>
-    <v-card height="400px">
+    <v-card height="100px">
       <v-footer dark padless fixed>
         <v-card class="flex" flat tile>
           <v-card-title class="blue">

@@ -1,6 +1,0 @@
-#acc_file
-
-links{"Disabled LGBTQ Activists":"https://www.advocate.com/exclusives/2020/4/17/disabled-lgbtq-activists-are-redefining-sex-and-sexuality"\
-      "Disability GoFundMe": "https://www.gofundme.com/cause/empower-people-with-disabilities"\
-      "Disability Mutual Aid" : "https://www.paypal.com/pools/c/8pFQzbhrOn"\
-      "Disability and COVID" : "https://www.accessliving.org/our-services/covid-19-resources-for-the-disability-community/",}

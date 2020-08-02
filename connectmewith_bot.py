@@ -64,10 +64,9 @@ def reply_to_tweets_and_match():
         # looks for BLM topic
 
         if "blm" in words[1] or "blacklivesmatter" in words[1]:
-            matching_db.insert({"topic": "blm", "id": mention.user.id})
-            if (
-                len(matching_db.search(Topic.topic == "blm")) == 1
-            ):  # if there's only one user
+            if len(matching_db.search(Topic.topic == "blm")) == 1:
+                # if there's only one user
+                matching_db.insert({"topic": "blm", "id": mention.user.id})
                 print("responding back...", flush=True)
 
                 # try-except to avoid duplicate error
@@ -85,10 +84,9 @@ def reply_to_tweets_and_match():
                     else:
                         raise error
                 print("update sent!", flush=True)
-            elif mention.user.id in id_list:  # so it doesn't connect you with yourself
-                continue
-                continue
-            else:
+            elif (
+                mention.user.id not in id_list
+            ):  # so it doesn't connect you with yourself
                 print("match made!")
                 matching_db.insert({"topic": "blm", "id": mention.user.id})
 
@@ -108,7 +106,7 @@ def reply_to_tweets_and_match():
                 print("preparing for a new match!")
             # call the direct message/ text with those user
 
-        print(matching_db.all())
+    print(matching_db.all())
 
 
 # loops every 15sec

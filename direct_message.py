@@ -19,6 +19,7 @@ def dm_article(user_id, user_handle, topic):
 
     except tweepy.TweepError as error:
         if error.api_code == 349:
+            print("user not following... responding")
             api.update_status(
                 "@"
                 + user_handle
@@ -27,7 +28,7 @@ def dm_article(user_id, user_handle, topic):
             )
             api.create_friendship(user_id)
         else:
-            print("something else went wrong")
+            print("something went wrong :(")
 
 
 # dm user that they've been connected to another user\
@@ -39,6 +40,3 @@ def dm_connection(user_id, connected_user_handle):
         + " have shared similar interests! Hit them up and talk about your passions! Use one of the articles we sent as a conversation starter!",
     )
 
-
-# dm_article(1266538686558044160, "rockets")
-# dm_connection(1266538686558044160, "KrisMadas")

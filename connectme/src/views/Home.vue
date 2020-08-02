@@ -1,11 +1,10 @@
 <template>
   <span>
-    <div
-      style="height: 400px; background-color: black"
-      class="bannerTop"
-      absolute
-    >
-      <v-card class="mx-auto topics" max-width="344">
+    <v-parallax
+    dark
+    src="https://cdn.pixabay.com/photo/2020/06/11/09/37/black-lives-matter-5285956_1280.jpg"
+  >
+      <v-card class=" topics" max-width="600px">
         <v-card-text>
           <div>#BlackLivesMatter</div>
           <p class="display-1 text--primary">
@@ -18,13 +17,13 @@
           </div>
         </v-card-text>
         <v-card-actions>
-        <v-spacer></v-spacer>
-          <v-btn text color="red accent-4">
+          <v-spacer> </v-spacer>
+          <v-btn text color="red accent-4" @click="learnMore">
             Learn More
           </v-btn>
         </v-card-actions>
       </v-card>
-      <v-card class="mx-auto card" color="#E0193D" dark width="400">
+      <v-card class="mx-auto card" color="#E0193D" dark width="490px">
         <v-card-title>
           <v-icon large left>
             mdi-twitter
@@ -33,7 +32,7 @@
         </v-card-title>
 
         <v-card-text class="headline font-weight-bold">
-          @ConnectMeWith_
+          @ConnectMeWith_ #BlackLivesMatter
         </v-card-text>
 
         <v-card-actions>
@@ -56,6 +55,14 @@
           </v-list-item>
         </v-card-actions>
       </v-card>
+      <v-row>
+        <div id="titleTop">
+          <h1>IT'S TIME TO HAVE A CONVERSATION</h1>
+        </div>
+      </v-row>
+      </v-parallax>
+    <div id="presentation">
+      <v-img src="../assets/1.png" height="400px"></v-img>
     </div>
   </span>
 </template>
@@ -75,16 +82,21 @@ export default {
         "8 de Marzo",
         "Climate Change",
         "Me too",
-        "Take a Knee",
-      ],
+        "Take a Knee"
+      ]
     };
   },
   components: {},
   computed: {
     changeIndex: function() {
       return Math.floor(Math.random() * this.topics.length);
-    },
+    }
   },
+  methods: {
+    learnMore() {
+      window.open("https://blacklivesmatter.com/", "_blank");
+    }
+  }
 };
 </script>
 
@@ -105,11 +117,58 @@ export default {
 }
 .bannerTop {
   padding: 3%;
+  height: 400px;
+  background-color: black;
 }
 .topics {
   position: absolute;
-  right: 5%;
+  left: 22%;
+  top: 15%;
   margin-right: 5%;
-  margin-top: 10%;
+}
+#presentation {
+  height: 350px;
+  width: 350px;
+  position: absolute;
+  right: 0px;
+}
+#titleTop {
+  position: absolute;
+  right: 5%;
+  top: 30%;
+  margin-right: 5%;
+  color: yellow;
+  font-size: 40px;
+  width: 30%;
+  text-align: right;
+  line-height: 150%;
+}
+@media only screen and (max-width: 960px) and (min-width: 76px) {
+  .bannerTop {
+    height: 400px;
+  }
+  .card {
+  margin-top: 250px;
+  margin-left: 20%;
+  top: 8%;
+  position: absolute;
+  }
+  .topics {
+    position: absolute;
+    left: 45%;
+    top: 15%;
+    margin-right: 5%;
+  }
+  #titleTop {
+    position: absolute;
+    left: 5%;
+    top: 20%;
+    margin-right: 5%;
+    color: yellow;
+    font-size: 20px;
+    width: 30%;
+    text-align: right;
+    line-height: 150%;
+  }
 }
 </style>

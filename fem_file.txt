@@ -1,6 +1,0 @@
-#fem_file
-
-links{"Femicide": "https://apps.who.int/iris/bitstream/handle/10665/77421/WHO_RHR_12.38_eng.pdf;jsessionid=7825F039741B0A167A67C5D1B90DE65C?sequence=1"\
-      "Feminism": "https://www.awid.org/news-and-analysis/we-were-never-gender-binary-its-time-reclaim-radical-lesbian-feminism",\
-      "Abolitionist Feminism" : "https://www.ippr.org/juncture-item/what-is-abolitionist-feminism-and-why-does-it-matter",}
-

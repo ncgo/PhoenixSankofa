@@ -32,13 +32,25 @@
           class="hidden-sm-and-down mr-3"
           color="#E0193D"
           @click="$router.push('/about')"
-          >ABOUT US
+          >ABOUT
         </v-btn>
         <v-btn
           class="hidden-sm-and-down mr-3"
           color="#E0193D"
           @click="$router.push('/data')"
           >DATA
+        </v-btn>
+        <v-btn
+          class="hidden-sm-and-down mr-3"
+          color="#E0193D"
+          @click="$router.push('/documentation')"
+          >DOCUMENTATION
+        </v-btn>
+        <v-btn
+          class="hidden-sm-and-down mr-3"
+          color="#E0193D"
+          @click="$router.push('/team')"
+          >MEET THE TEAM
         </v-btn>
         <v-btn color="#6CCFF6 lighten-3" @click="tryItOut">TRY IT OUT</v-btn>
       </v-app-bar>

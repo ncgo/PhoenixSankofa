@@ -62,7 +62,7 @@
         <div id="titleTop">
           <h2>IT'S TIME TO HAVE A CONVERSATION</h2>
           <v-btn @click="tryItOut"> @ConnectMeWith</v-btn><br />
-          <v-btn color="red" @click="$router.push('instructions')">
+          <v-btn color="red" @click="$router.push('about')">
             Learn More
           </v-btn>
         </div>

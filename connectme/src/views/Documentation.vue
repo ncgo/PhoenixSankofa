@@ -13,7 +13,7 @@
       style="z-index: 99;"
       fixed
     >
-      Coming soon right at you!
+      Coming soom right at you!
     </v-alert>
 
     <div class="text-center">
@@ -34,14 +34,15 @@
     >
       <div fixed class="bannerTop">
       <div id="titleTop">
-          <h2>LET'S TALK DATA</h2>
+          <h2>LET'S TALK DOCUMENTATION</h2>
           <v-btn @click="tryItOut"> Tweet @ Me!</v-btn><br />
           <v-btn color="red" @click="alert = true">
-            Visualize my Data!
+            Learn More
           </v-btn>
         </div></div>
         <v-container style="width: 50%; right: 0%">
-        <v-img src="../assets/future.png"></v-img>
+        <v-img src="../assets/steps.png"></v-img>
+        <v-img src="../assets/tools.png"></v-img>
         </v-container>
     </v-parallax>
   </span>

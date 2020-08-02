@@ -97,7 +97,7 @@ def reply_to_tweets_and_match():
                 print("match can be made!")
                 # select a random user in the database before inserting this one:
                 current_users_in_db = matching_db.search(Topic.topic == "blm")
-                if len(matching_db.search(Topic.topic == "blm")) == 0:
+                if len(matching_db.search(Topic.topic == "blm")) == 1:
                     user_to_connect_index = 0
                 else:
                     user_to_connect_index = random.randrange(
@@ -180,7 +180,7 @@ def reply_to_tweets_and_match():
                 print("match can be made!")
                 # select a random user in the database before inserting this one:
                 current_users_in_db = matching_db.search(Topic.topic == "acc")
-                if len(matching_db.search(Topic.topic == "acc")) == 0:
+                if len(matching_db.search(Topic.topic == "acc")) == 1:
                     user_to_connect_index = 0
                 else:
                     user_to_connect_index = random.randrange(
@@ -262,7 +262,7 @@ def reply_to_tweets_and_match():
                 print("match can be made!")
                 # select a random user in the database before inserting this one:
                 current_users_in_db = matching_db.search(Topic.topic == "feminism")
-                if len(matching_db.search(Topic.topic == "feminism")) == 0:
+                if len(matching_db.search(Topic.topic == "feminism")) == 1:
                     user_to_connect_index = 0
                 else:
                     user_to_connect_index = random.randrange(
@@ -344,7 +344,7 @@ def reply_to_tweets_and_match():
                 print("match can be made!")
                 # select a random user in the database before inserting this one:
                 current_users_in_db = matching_db.search(Topic.topic == "latinx")
-                if len(matching_db.search(Topic.topic == "latinx")) == 0:
+                if len(matching_db.search(Topic.topic == "latinx")) == 1:
                     user_to_connect_index = 0
                 else:
                     user_to_connect_index = random.randrange(
@@ -389,7 +389,6 @@ def reply_to_tweets_and_match():
         else:
             topic_submitted = words[1]
             print("custom topic: " + topic_submitted)
-            print("latinx topic")
             if len(matching_db.search(Topic.topic == topic_submitted)) == 0:
                 # if there's only one user
                 matching_db.insert(
@@ -428,7 +427,7 @@ def reply_to_tweets_and_match():
                 print("match can be made!")
                 # select a random user in the database before inserting this one:
                 current_users_in_db = matching_db.search(Topic.topic == topic_submitted)
-                if len(matching_db.search(Topic.topic == topic_submitted)) == 0:
+                if len(matching_db.search(Topic.topic == topic_submitted)) == 1:
                     user_to_connect_index = 0
                 else:
                     user_to_connect_index = random.randrange(
@@ -479,8 +478,3 @@ def reply_to_tweets_and_match():
 while True:
     reply_to_tweets_and_match()
     time.sleep(15)
-
-# for development
-# mentions = api.mentions_timeline()
-# for mention in reversed(mentions):
-#     print(mention.text, mention.user.screen_name, mention.user.id)

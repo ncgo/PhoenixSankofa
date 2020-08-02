@@ -1,5 +1,6 @@
 import tweepy
 import time
+from tinydb import TinyDB, Query
 
 print("Connect Me With by Team Phoenix Sankofa for Twitter Hackathon")
 
@@ -14,9 +15,9 @@ api = tweepy.API(auth)
 
 FILE_NAME = "last_seen_id.txt"
 
-# dictionary keeping track of users who tweet at the bot
-# ex. 0: [id1, id2]
-matching_dict = {}
+# setting up database
+matching_db = TinyDB("db.json")
+Topic = Query()
 
 # only looks at new tweets
 
@@ -44,7 +45,7 @@ def reply_to_tweets_and_match():
 
     mentions = api.mentions_timeline(last_seen_id)
     for mention in reversed(mentions):
-        print(str(mention.id) + " - " + mention.text, flush=True)
+        print(str(mention.id) + " - " + mention.text)
         last_seen_id = mention.id
         store_last_seen_id(last_seen_id, FILE_NAME)
         words = mention.text.lower().split(" ")
@@ -52,42 +53,66 @@ def reply_to_tweets_and_match():
         # prints the mentions words
         print(words)
 
-        # set up for matching:
-        if len(matching_dict.keys()) == 0:
-            match = 0
+        # stores the user ids currently in db in list to check for duplicate tweets
+        id_list = []
+        for entry in matching_db.search(Topic.topic == "blm"):
+            id_list.append(entry["id"])
+
+        print(id_list)
+        print(mention.user.id in id_list)
 
         # looks for BLM topic
 
-        if "blm" in words or "blacklivesmatter" in words:
+        if "blm" in words[1] or "blacklivesmatter" in words[1]:
+            matching_db.insert({"topic": "blm", "id": mention.user.id})
             if (
-                match not in matching_dict.keys()
-            ):  # add the first user that requested blm and responds
-                matching_dict[match] = [mention.user.id]
+                len(matching_db.search(Topic.topic == "blm")) == 1
+            ):  # if there's only one user
                 print("responding back...", flush=True)
-                api.update_status(
-                    "@" + mention.user.screen_name + " Preparing your connection...",
-                    mention.id,
-                )
-                print("update sent!", flush=True)
-            elif (
-                len(matching_dict[match]) == 1
-            ):  # add the other user and prepare to add a new entry
-                print("match made!")
-                matching_dict[match].append(mention.user.id)
-                api.update_status(
-                    "@" + mention.user.screen_name + "You have been connected!",
-                    mention.id,
-                )
-                match += 1
-                print("preparing for a new match!")
-                # call the direct message/ text with those user
 
-        print(matching_dict)
+                # try-except to avoid duplicate error
+                try:
+                    api.update_status(
+                        "@"
+                        + mention.user.screen_name
+                        + " Preparing your connection...",
+                        mention.id,
+                    )
+                except tweepy.TweepError as error:
+                    if error.api_code == 187:
+                        # Do something special
+                        print("\n\nduplicate message\n\n")
+                    else:
+                        raise error
+                print("update sent!", flush=True)
+            elif mention.user.id in id_list:  # so it doesn't connect you with yourself
+                continue
+                continue
+            else:
+                print("match made!")
+                matching_db.insert({"topic": "blm", "id": mention.user.id})
+
+                # try-except to avoid duplicate error
+                try:
+                    api.update_status(
+                        "@" + mention.user.screen_name + " You have been connected!",
+                        mention.id,
+                    )
+                except tweepy.TweepError as error:
+                    if error.api_code == 187:
+                        # Do something special
+                        print("\n\nduplicate message\n\n")
+                    else:
+                        raise error
+
+                print("preparing for a new match!")
+            # call the direct message/ text with those user
+
+        print(matching_db.all())
 
 
 # loops every 15sec
 
-reply_to_tweets_and_match()
-# while True:
-#     reply_to_tweets_and_match()
-#     time.sleep(15)
+while True:
+    reply_to_tweets_and_match()
+    time.sleep(15)

@@ -3,12 +3,18 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import Data from "../views/Data.vue";
+import Team from "../views/Team.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
+    name: "Home",
+    component: Home
+  },
+  {
+    path: "/home",
     name: "Home",
     component: Home
   },
@@ -21,6 +27,11 @@ const routes = [
     path: "/data",
     name: "Data",
     component: Data
+  },
+  {
+    path: "/team",
+    name: "Team",
+    component: Team
   }
 ];
 
